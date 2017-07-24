@@ -9,7 +9,12 @@ namespace BikeWorld
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                         "~/Scripts/jquery-{version}.js"));
+            //"~/Scripts/bootstrap.js",
+            //          "~/Scripts/bootbox.js",
+            //           "~/Scripts/datatables/jquey.datatables.js",
+            //             "~/Scripts/datatables/datatables.bootstrap.js",
+            //          "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -21,10 +26,19 @@ namespace BikeWorld
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootbox.js",
+                         "~/Scripts/respond.js",
+                          "~/Scripts/DataTables/jquery.dataTables.js",
+                  "~/Scripts/DataTables/dataTables.bootstrap.js"));
+
+
+            //"~/Scripts/Datatables/jquey.datatables.js",
+            //             "~/Scripts/Datatables/datatables.bootstrap.js",
+            //          "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-united.css",
+                      "~/Content/DataTables/css/dataTables.bootstrap.css", 
                       "~/Content/site.css"));
         }
     }

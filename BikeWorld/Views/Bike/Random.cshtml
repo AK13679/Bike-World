@@ -1,0 +1,20 @@
+﻿@model BikeWorld.ViewModels.RandomBikeViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<h2>@Model.Bike.Name</h2>
+@if (Model.Customers.Count==0)
+{ <p>no one has rented this bike</p>
+}
+else
+{
+<ul>
+@foreach (var customers in Model.Customers)
+{
+    <li>@customers.Name</li>
+}
+    </ul>
+
+}
