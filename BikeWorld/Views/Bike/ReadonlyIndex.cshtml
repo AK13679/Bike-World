@@ -1,0 +1,93 @@
+﻿@model BikeWorld.ViewModels.BikesViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bikes</h2>
+
+@*<a href="@Url.Action("New", "Bike")" class="btn btn-primary"><i class="fa fa-plus-circle"></i>New Bike</a>*@
+<br/><br/>
+
+@*@if (Model.Bike.Count == 0)
+{
+    <p>No Movies exist yet.</p>
+}
+else
+{*@
+    <table id="bikes" class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Bikes</th>
+                <th class="text-center">Available</th>
+                @*<th>Delete</th>*@
+            </tr>
+        </thead>
+        <tbody>
+        @*@foreach (var bike in Model.Bike)
+        {
+            <tr valign="middle">
+                <td>@Html.ActionLink(bike.Name, "Edit", "Bikes", new {id = bike.Id }, null)</td>
+                <td class="text-center">@bike.NumberInStock</td>*@
+                @*<td width="40"><a href="@Url.Action("Delete", "Movies", new {id = movie.Id})" class="btn btn-primary"><i class="fa fa-close"></i> Delete</a></td>*@
+                @*<td><button data-bike-id="@bike.Id" class=" text-center btn-link bik-delete">Delete</button></td>
+            </tr>  
+        }*@
+            </tbody>
+    </table>
+@*}*@
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+          var curtable = $("#bikes").DataTable({
+                ajax: {
+                    url: "/api/bikes",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                    data: "name",
+                    //render: function (data, type, bikes) {
+                    //    return "<a href='/Bike/Edit/" + bikes.id + "'>" + bikes.name + "</a>";
+                   //  }
+                    },
+                   
+                    {
+                        data: "numberInStock"
+
+                    },
+                    //{
+                    //    data: "id",
+                    //    render: function (data) {
+                    //     return "<button class='btn-link bik-delete' data-bike-id="+ data +">Delete</button>";
+                    //  }
+                    //},
+                ]
+
+            });
+
+            //$("#bikes").on("click", ".bik-delete",function () {
+            //    var button = $(this);
+
+            //    bootbox.confirm("Do you really want to delete this Bike ?", function (Result) {
+            //        if (Result) {
+            //            $.ajax({
+            //                url: "/api/bikes/" + button.attr("data-bike-id"),
+            //                method: 'DELETE',
+            //                success: function () {
+            //                    //  console.log("hi chutiya");
+            //                    curtable.row(button.parents("tr")).remove().draw();
+            //                   // button.parents("tr").remove();
+            //                }
+            //            });
+            //       }
+            //    });
+            //});
+        });
+    </script>
+}
+

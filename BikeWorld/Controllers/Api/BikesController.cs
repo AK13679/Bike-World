@@ -41,6 +41,7 @@ namespace BikeWorld.Controllers.Api
         }
 
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageBikes)]
         public IHttpActionResult CreateBike(BikeDto bikeDto)
         {
             if (!ModelState.IsValid)
@@ -57,6 +58,7 @@ namespace BikeWorld.Controllers.Api
         }
 
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageBikes)]
         public void UpdateBike(int id, BikeDto bikeDto)
         {
             if (!ModelState.IsValid)
@@ -81,6 +83,7 @@ namespace BikeWorld.Controllers.Api
         }
 
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageBikes)]
         public void DeleteBike(int id)
         {
             var bikeinDb = _context.Bike.SingleOrDefault(c => c.Id == id);

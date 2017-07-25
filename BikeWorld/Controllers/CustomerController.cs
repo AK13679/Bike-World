@@ -23,24 +23,31 @@ namespace BikeWorld.Controllers
             _context.Dispose();
         }
 
-       
+
         // GET: Customer
+        [Route("Customers")]
         public ViewResult Index()
         {
-            
-           //var viewModel = new CustomersViewModel();
-           var customers= _context.Customers.ToList();
-            var membershiptypes = _context.MembershipTypes.ToList();
-            var viewModel = new CustomersViewModel()
+            if (User.IsInRole(RoleName.CanManageBikes))
+            {  //var viewModel = new CustomersViewModel();
+                //var customers = _context.Customers.ToList();
+                //var membershiptypes = _context.MembershipTypes.ToList();
+                //var viewModel = new CustomersViewModel()
+                //{
+                //    Customers = customers,
+                //    MembershipTypes = membershiptypes,
+
+                //};
+                return View("Index");
+            }
+            else
             {
-                Customers = customers,
-                MembershipTypes = membershiptypes,
-
-            };
-            return View(viewModel);
-
+                return View("ReadonlyIndex");
+            }
         }
 
+        [Route("New_Customer")]
+        [Authorize(Roles = RoleName.CanManageBikes)]
         public ActionResult New()
         {
             var membershiptypes = _context.MembershipTypes.ToList();

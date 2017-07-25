@@ -23,13 +23,17 @@ namespace BikeWorld.Controllers
             _context.Dispose();
         }
 
-        //[Route("Bikes")]
+        [Route("Bikes")]
         public ViewResult Index()
         {
             //var viewModel = new BikesViewModel();
             //viewModel.Bike = _context.Bike.ToList();
             //return View(viewModel);
-            return View();
+            if (User.IsInRole(RoleName.CanManageBikes))
+            
+                return View("Index");
+           
+            return View("ReadonlyIndex");
         }
 
         [Route("Bike/details/{id}")]
@@ -47,23 +51,25 @@ namespace BikeWorld.Controllers
 
 
         // GET: Bikes
-        public ActionResult Random()
-        {
-            var bike = new Bike() { Name = "Harley" };
-            var customers = new List<Customer>
-            {
-              new Customer(){  Name = "Abhi" },
-                new Customer(){ Name = "Ashish" },
-            };
+        //public ActionResult Random()
+        //{
+        //    var bike = new Bike() { Name = "Harley" };
+        //    var customers = new List<Customer>
+        //    {
+        //      new Customer(){  Name = "Abhi" },
+        //        new Customer(){ Name = "Ashish" },
+        //    };
 
-            var viewModel = new RandomBikeViewModel
-            {
-                Bike = bike,
-                Customers = customers
-            };
-            return View(viewModel);
-        }
+        //    var viewModel = new RandomBikeViewModel
+        //    {
+        //        Bike = bike,
+        //        Customers = customers
+        //    };
+        //    return View(viewModel);
+        //}
 
+        [Route("New_Bike")]
+        [Authorize(Roles = RoleName.CanManageBikes)] //overide global authorization
         public ActionResult New()
         {
             
@@ -111,6 +117,8 @@ namespace BikeWorld.Controllers
             return RedirectToAction("Index", "Bike");
         }
 
+      
+        [Authorize(Roles = RoleName.CanManageBikes)]
         public ActionResult Edit(int Id)
         {
             // var viewModel = new CustomersViewModel();

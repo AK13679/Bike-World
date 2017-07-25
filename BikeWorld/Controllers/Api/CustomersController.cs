@@ -42,6 +42,7 @@ namespace BikeWorld.Controllers.Api
         }
 
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageBikes)]
         public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
@@ -58,6 +59,7 @@ namespace BikeWorld.Controllers.Api
         }
 
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageBikes)]
         public void UpdateCustomer(int id,CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
@@ -81,6 +83,7 @@ namespace BikeWorld.Controllers.Api
 
         }
 
+        [Authorize(Roles = RoleName.CanManageBikes)]
         [HttpDelete]
         public void DeleteCustomer(int id)
         {

@@ -6,13 +6,16 @@ using System.Web.Mvc;
 
 namespace BikeWorld.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
+       
         public ActionResult Index()
         {
             return View();
         }
 
+        [Route("About")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -20,6 +23,7 @@ namespace BikeWorld.Controllers
             return View();
         }
 
+        [Route("Contact")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
