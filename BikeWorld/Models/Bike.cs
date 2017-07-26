@@ -17,5 +17,7 @@ namespace BikeWorld.Models
 
         [Display(Name = "Number in Stock")]
         public int NumberInStock { get; set; }
+
+        public int NoAvailable { get; set; }
     }
 }

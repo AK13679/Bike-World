@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Booking</h2>
+<form>
+    <div class="form-group">
+        <label>Customers</label>
+
+        <div>
+            <input id="customer" type="text" value="" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Bike</label>
+        <div>
+            <input id="bike" type="text" value="" class="form-control" />
+        </div>
+    </div>
+    <button class="btn btn-primary">Submit</button>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="bikes" class="list-group"></ul>
+        </div>
+    </div>
+   
+</form>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            var vm = {
+                bikeIds : []
+            };
+     
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/customers?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+       
+            $('#customer').typeahead({
+                minLength: 1,
+                highlight: true
+            }, {
+                    name: 'customers',
+                    display: 'name',
+                    source: customers
+                }).on("typeahead:select", function (e, customer) {
+
+                    vm.customerId = customer.customerId;
+                });
+
+          
+            var bikes = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/bikes?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+
+            $('#bike').typeahead({
+                minLength: 1,
+                highlight: true
+            }, {
+                    name: 'bikes',
+                    display: 'name',
+                    source: bikes
+                }).on("typeahead:select", function (e, bike) {
+
+                    $("#bikes").append("<li class='list-group-item'>" + bike.name + "</li>");
+                    $("#bike").typeahead("val", "");
+                    vm.bikeIds.push(bike.bikeIds);
+                });
+        });
+    </script>
+}
