@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BikeWorld.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace BikeWorld.Dto
@@ -18,5 +15,7 @@ namespace BikeWorld.Dto
 
         //[Display(Name = "Number in Stock")]
         public int NumberInStock { get; set; }
+
+        public int NoAvailable { get; set; }
     }
 }

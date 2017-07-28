@@ -18,7 +18,7 @@
 }
 
 .tt-menu {
-    width: 422px;
+    width: 250px;
     margin: 12px 0;
     padding: 8px 0;
     background-color: #fff;
@@ -33,9 +33,10 @@
 }
 
 .tt-suggestion {
-    padding: 3px 20px;
-    font-size: 18px;
+    padding: 3px 18px;
+    font-size: 16px;
     line-height: 24px;
+    max-width: 250px;
 }
 
     .tt-suggestion:hover {

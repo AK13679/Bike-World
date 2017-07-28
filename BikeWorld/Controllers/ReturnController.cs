@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace BikeWorld.Controllers
 {
-    public class BookingController : Controller
+    public class ReturnController : Controller
     {
         // GET: Booking
-        [Route("Booking")]
+        [Route("Return")]
         public ActionResult New()
         {
             return View();

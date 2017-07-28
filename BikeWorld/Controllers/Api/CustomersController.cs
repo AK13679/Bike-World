@@ -25,20 +25,28 @@ namespace BikeWorld.Controllers.Api
             _context.Dispose();
         }
 
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IEnumerable<CustomerDto> GetCustomers(string query = null)
         {
-            return _context.Customers.Include(c=> c.MembershipType).ToList().Select(Mapper.Map<Customer,CustomerDto>);
+            // return _context.Customers.Include(c=> c.MembershipType).ToList().Select(Mapper.Map<Customer,CustomerDto>);
+
+            var customerQuery = _context.Customers.Include(c => c.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                customerQuery = customerQuery.Where(c => c.Name.Contains(query));
+
+            var customerdto = customerQuery.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return (customerdto);
 
         }
 
         public IHttpActionResult GetCustomer(int id)
         {
-            var customer= _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return NotFound();
 
-            return Ok(Mapper.Map<Customer,CustomerDto>(customer));
+            return Ok(Mapper.Map<Customer, CustomerDto>(customer));
         }
 
         [HttpPost]
@@ -48,29 +56,29 @@ namespace BikeWorld.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var customer = Mapper.Map<CustomerDto,Customer>(customerDto);
+            var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
 
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
             customerDto.Id = customer.Id;
 
-            return Created(new Uri(Request.RequestUri + "/" + customer.Id),customerDto);
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         [HttpPut]
         [Authorize(Roles = RoleName.CanManageBikes)]
-        public void UpdateCustomer(int id,CustomerDto customerDto)
+        public void UpdateCustomer(int id, CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             var customerinDb = _context.Customers.SingleOrDefault(c => c.Id == id);
 
-            if(customerinDb==null)
+            if (customerinDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            Mapper.Map(customerDto,customerinDb);
+            Mapper.Map(customerDto, customerinDb);
 
             //customerinDb.Name = customerDto.Name;
             //customerinDb.Dob = customerDto.Dob;

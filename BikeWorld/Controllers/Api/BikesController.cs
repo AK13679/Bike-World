@@ -24,20 +24,30 @@ namespace BikeWorld.Controllers.Api
             _context.Dispose();
         }
 
-        public IEnumerable<BikeDto> GetBikes()
+        public IEnumerable<BikeDto> GetBikes(string query = null)
         {
-            return _context.Bike.ToList().Select(Mapper.Map<Bike, BikeDto>);
+            // return _context.Bike.ToList().Select(Mapper.Map<Bike, BikeDto>);
+
+            var bikeQuery = _context.Bike.Where(b=> b.NoAvailable > 0);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                bikeQuery = bikeQuery.Where(b=> b.Name.Contains(query));
+
+            var bikedtos = bikeQuery.ToList().Select(Mapper.Map<Bike, BikeDto>);
+
+            return (bikedtos);
 
         }
 
         public IHttpActionResult GetBike(int id)
         {
-            var bike = _context.Bike.SingleOrDefault(c => c.Id == id);
+            var bike = _context.Bike.SingleOrDefault(b => b.Id == id);
 
             if (bike == null)
                 return NotFound();
 
             return Ok(Mapper.Map<Bike, BikeDto>(bike));
+
         }
 
         [HttpPost]
@@ -64,7 +74,7 @@ namespace BikeWorld.Controllers.Api
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var bikeinDb = _context.Bike.SingleOrDefault(c => c.Id == id);
+            var bikeinDb = _context.Bike.SingleOrDefault(b => b.Id == id);
 
             if (bikeinDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -86,7 +96,7 @@ namespace BikeWorld.Controllers.Api
         [Authorize(Roles = RoleName.CanManageBikes)]
         public void DeleteBike(int id)
         {
-            var bikeinDb = _context.Bike.SingleOrDefault(c => c.Id == id);
+            var bikeinDb = _context.Bike.SingleOrDefault(b => b.Id == id);
             if (bikeinDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             _context.Bike.Remove(bikeinDb);

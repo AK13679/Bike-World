@@ -1,6 +1,6 @@
 ﻿@model BikeWorld.ViewModels.BikesViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Bikes Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,6 +19,7 @@ else
         <thead>
             <tr>
                 <th>Bikes</th>
+                <th>Total Quantity</th>
                 <th class="text-center">Available</th>
                 <th>Delete</th>
             </tr>
@@ -55,9 +56,12 @@ else
                         return "<a href='/Bike/Edit/" + bikes.id + "'>" + bikes.name + "</a>";
                      }
                     },
-                   
                     {
                         data: "numberInStock"
+
+                    },
+                    {
+                        data: "noAvailable"
 
                     },
                     {

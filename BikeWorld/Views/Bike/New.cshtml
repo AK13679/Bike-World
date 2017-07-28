@@ -1,7 +1,7 @@
 ﻿@model BikeWorld.ViewModels.NewBikeViewModel
 
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = "New Bike";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -22,7 +22,13 @@
         @Html.TextBoxFor(m => m.Bike.NumberInStock, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Bike.NumberInStock)
     </div>
- 
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bike.NoAvailable)
+        @Html.TextBoxFor(m => m.Bike.NoAvailable, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Bike.NoAvailable)
+    </div>
+
         @Html.HiddenFor(m => m.Bike.Id)
         @Html.AntiForgeryToken()
         <button type="submit" class="btn btn-primary">Save</button>

@@ -6,12 +6,12 @@ using BikeWorld.Models;
 
 namespace BikeWorld.Controllers.Api
 {
-    public class BookingController : ApiController
+    public class ReturnController : ApiController
     {
 
         private BikeDBContext _context;
 
-        public BookingController()
+        public ReturnController()
         {
             _context = new BikeDBContext();
         }
@@ -32,24 +32,22 @@ namespace BikeWorld.Controllers.Api
 
             var bikes = _context.Bike.Where(b => Bookingdto.BikeIds.Contains(b.Id));
 
-
             foreach (var bike in bikes)
             {
-                if (bike.NoAvailable == 0)
-                    return BadRequest("Bike is not available now.");
-
-                bike.NoAvailable--;
-
-                var booking = new Booking
-                {
-                    Customer = customers,
-                    Bike = bike,
-                    DateRented = DateTime.Now
-
-                };
-
-                _context.Booking.Add(booking);
+                if (bike.NoAvailable == bike.NumberInStock)
+                  return BadRequest("All bikes are returned.");
                
+                        bike.NoAvailable++;
+
+                        var Return = new Return
+                        {
+                            Customer = customers,
+                            Bike = bike,
+                            DateRented = DateTime.Now
+
+                        };
+
+                        _context.Return.Add(Return);
             }
             _context.SaveChanges();
             return Ok();

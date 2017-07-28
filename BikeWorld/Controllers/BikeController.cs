@@ -110,7 +110,8 @@ namespace BikeWorld.Controllers
                 //TryUpdateModel(customerinDb);
                 bikeinDb.Name = bike.Name;
                 bikeinDb.NumberInStock = bike.NumberInStock;
-               
+                bikeinDb.NoAvailable = bike.NoAvailable;
+
             }
             _context.SaveChanges();
 

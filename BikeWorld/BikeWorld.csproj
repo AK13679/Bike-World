@@ -213,14 +213,17 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BikesController.cs" />
+    <Compile Include="Controllers\Api\ReturnController.cs" />
     <Compile Include="Controllers\Api\BookingController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\BikeController.cs" />
+    <Compile Include="Controllers\ReturnController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Dto\BikeDto.cs" />
+    <Compile Include="Dto\ReturnDto.cs" />
     <Compile Include="Dto\BookingDto.cs" />
     <Compile Include="Dto\CustomerDto.cs" />
     <Compile Include="Dto\MembershipTypeDto.cs" />
@@ -296,10 +299,19 @@
     <Compile Include="Migrations\201707260919002_Noavailable.Designer.cs">
       <DependentUpon>201707260919002_Noavailable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707280540128_return.cs" />
+    <Compile Include="Migrations\201707280540128_return.Designer.cs">
+      <DependentUpon>201707280540128_return.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707280551412_returndb.cs" />
+    <Compile Include="Migrations\201707280551412_returndb.Designer.cs">
+      <DependentUpon>201707280551412_returndb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BikeDBContext.cs" />
     <Compile Include="Models\Bike.cs" />
+    <Compile Include="Models\Return.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -426,6 +438,8 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -442,6 +456,9 @@
     </Content>
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -517,6 +534,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\typeahead.bundle.js" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
@@ -567,6 +586,7 @@
     <Content Include="Views\Bike\ReadonlyIndex.cshtml" />
     <Content Include="Views\Customer\ReadonlyIndex.cshtml" />
     <Content Include="Views\Booking\New.cshtml" />
+    <Content Include="Views\Return\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -638,6 +658,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707260919002_Noavailable.resx">
       <DependentUpon>201707260919002_Noavailable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707280540128_return.resx">
+      <DependentUpon>201707280540128_return.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707280551412_returndb.resx">
+      <DependentUpon>201707280551412_returndb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

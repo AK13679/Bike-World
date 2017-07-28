@@ -1,11 +1,11 @@
 ﻿
 @{
-    ViewBag.Title = "Booking Information";
+    ViewBag.Title = "Return Information";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Booking</h2>
-<form id="bookingform">
+<h2>Return</h2>
+<form id="returnform">
     <div class="form-group">
         <label>Customer</label>
 
@@ -16,7 +16,7 @@
     <div class="form-group">
         <label>Bike</label>
         <div>
-            <input id="bike" name="bike" data-rule-atleastone  type="text" value="" class="form-control" />
+            <input id="bike" name="bike" data-rule-atleastone type="text" value="" class="form-control" />
         </div>
     </div>
     <button class="btn btn-primary">Submit</button>
@@ -97,18 +97,18 @@
                 return vm.bikeIds.length > 0;
             }, "Please select atleat one bike.");
 
-            var validator = $('#bookingform').validate({
+            var validator = $('#returnform').validate({
                 submitHandler: function () {
 
                     //e.preventDefault();
 
                     $.ajax({
-                        url: "/api/booking",
+                        url: "/api/return",
                         method: 'POST',
                         data: vm,
                     })
                         .done(function () {
-                            toastr.success("Booking Completed");
+                            toastr.success("Return Completed");
                             $("#customer").typeahead("val", "");
                             $("#bike").typeahead("val", "");
                             $("#bikes").empty();
@@ -121,7 +121,7 @@
                             validator.resetForm();
                         })
                         .fail(function () {
-                            toastr.warning("Booking Failed");
+                            toastr.warning("Return Failed");
                         });
                     return false;
                 }

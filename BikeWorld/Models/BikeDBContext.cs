@@ -10,6 +10,7 @@ namespace BikeWorld.Models
         public DbSet<Bike> Bike { get; set; }
         public DbSet<MembershipType> MembershipTypes { get; set; }
         public DbSet<Booking> Booking { get; set; }
+        public DbSet<Return> Return { get; set; }
 
         public BikeDBContext()
             : base("DefaultConnection", throwIfV1Schema: false)
