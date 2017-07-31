@@ -329,10 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DefaultConnection.mdf" />
-    <Content Include="App_Data\DefaultConnectionNew.mdf" />
-    <Content Include="App_Data\DefaultConnectionNew_log.ldf">
-      <DependentUpon>DefaultConnectionNew.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\DefaultConnection_log.ldf">
       <DependentUpon>DefaultConnection.mdf</DependentUpon>
     </Content>
@@ -466,8 +462,6 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -597,9 +591,13 @@
     <Content Include="Views\Customer\ReadonlyIndex.cshtml" />
     <Content Include="Views\Booking\New.cshtml" />
     <Content Include="Views\Return\New.cshtml" />
+    <None Include="Web.Testing.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Themes\Theme1\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
