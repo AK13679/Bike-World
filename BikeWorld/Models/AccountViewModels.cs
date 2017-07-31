@@ -70,6 +70,7 @@ namespace BikeWorld.Models
     {
 
         [Required]
+        [StringLength(12, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 12)]
         [Display(Name = "Aadhaar Number")]
         public string Aadhaar { get; set; }
 
