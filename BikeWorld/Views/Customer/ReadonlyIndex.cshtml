@@ -6,7 +6,7 @@
 
 <h2>Customers</h2>
 
-@*<a href="@Url.Action("New", "Customer")" class="btn btn-primary"><i class="fa fa-user-plus"></i>New Customer</a>*@
+<a href="@Url.Action("New", "Customer")" class="btn btn-primary"><i class="fa fa-user-plus"></i>New Customer</a>
 <br><br>
 
 @*@if (@Model.Customers.Count == 0)
@@ -47,7 +47,7 @@
 
             var curtable = $("#customers").DataTable({
                 ajax: {
-                    url: "/api/customers",
+                    url: "/deploy_bike/api/customers",
                     dataSrc: ""
                 },
                 columns: [

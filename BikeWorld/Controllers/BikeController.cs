@@ -118,7 +118,7 @@ namespace BikeWorld.Controllers
             return RedirectToAction("Index", "Bike");
         }
 
-      
+        [Route("Bike/Edit/{Id:regex(\\d+)}")]
         [Authorize(Roles = RoleName.CanManageBikes)]
         public ActionResult Edit(int Id)
         {

@@ -44,7 +44,7 @@
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: '/api/customers?query=%QUERY',
+                    url: '/deploy_bike/api/customers?query=%QUERY',
                     wildcard: '%QUERY'
                 }
             });
@@ -67,7 +67,7 @@
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: '/api/bikes?query=%QUERY',
+                    url: '/deploy_bike/api/bikes?query=%QUERY',
                     wildcard: '%QUERY'
                 }
             });
@@ -103,7 +103,7 @@
                     //e.preventDefault();
 
                     $.ajax({
-                        url: "/api/booking",
+                        url: "/deploy_bike/api/booking",
                         method: 'POST',
                         data: vm,
                     })

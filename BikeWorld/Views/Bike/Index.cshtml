@@ -46,14 +46,14 @@ else
 
           var curtable = $("#bikes").DataTable({
                 ajax: {
-                    url: "/api/bikes",
+                    url: "/deploy_bike/api/bikes",
                     dataSrc: ""
                 },
                 columns: [
                     {
                     data: "name",
                     render: function (data, type, bikes) {
-                        return "<a href='/Bike/Edit/" + bikes.id + "'>" + bikes.name + "</a>";
+                        return "<a href='/deploy_bike/Bike/Edit/" + bikes.id + "'>" + bikes.name + "</a>";
                      }
                     },
                     {
@@ -80,7 +80,7 @@ else
                 bootbox.confirm("Do you really want to delete this Bike ?", function (Result) {
                     if (Result) {
                         $.ajax({
-                            url: "/api/bikes/" + button.attr("data-bike-id"),
+                            url: "/deploy_bike/api/bikes/" + button.attr("data-bike-id"),
                             method: 'DELETE',
                             success: function () {
                                 //  console.log("hi chutiya");

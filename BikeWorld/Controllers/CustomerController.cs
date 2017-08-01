@@ -103,6 +103,7 @@ namespace BikeWorld.Controllers
             return RedirectToAction("Index","Customer");
         }
 
+        [Route("customer/Edit/{Id:regex(\\d+)}")]
         public ActionResult Edit(int id)
         {
            // var viewModel = new CustomersViewModel();
@@ -120,7 +121,7 @@ namespace BikeWorld.Controllers
             return View("New",viewModel);
         }
 
-        [Route("customer/details/{Id:regex(\\d+)}")]
+        [Route("customer/Details/{Id:regex(\\d+)}")]
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);

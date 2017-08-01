@@ -49,14 +49,14 @@
 
             var curtable = $("#customers").DataTable({
                 ajax: {
-                    url: "/api/customers",
+                    url: "/deploy_bike/api/customers",
                     dataSrc: ""
                 },
                 columns: [
                     {
                         data: "name",
                         render: function (data, type, customers) {
-                            return "<a href='/Customer/Edit/" + customers.id + "'>" + customers.name + "</a>";
+                            return "<a href='/deploy_bike/Customer/Edit/" + customers.id + "'>" + customers.name + "</a>";
                         }
                     },
 
@@ -80,7 +80,7 @@
                 bootbox.confirm("Do you really want to delete this customer ?", function (Result) {
                     if (Result) {
                         $.ajax({
-                            url: "/api/customers/" + button.attr("data-customer-id"),
+                            url: "/deploy_bike/api/customers/" + button.attr("data-customer-id"),
                             method: 'DELETE',
                             success: function () {
                                 //  console.log("hi chutiya");
