@@ -49,7 +49,7 @@ namespace BikeWorld.Controllers.Api
             return Ok(Mapper.Map<Customer, CustomerDto>(customer));
         }
 
-        [HttpPost]
+        //[HttpPost]
         [Authorize(Roles = RoleName.CanManageBikes)]
         public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
@@ -92,7 +92,8 @@ namespace BikeWorld.Controllers.Api
         }
 
         [Authorize(Roles = RoleName.CanManageBikes)]
-        [HttpDelete]
+        // [HttpDelete]
+        [HttpPost]
         public void DeleteCustomer(int id)
         {
             var customerinDb = _context.Customers.SingleOrDefault(c => c.Id == id);

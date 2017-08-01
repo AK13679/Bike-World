@@ -50,7 +50,7 @@ namespace BikeWorld.Controllers.Api
 
         }
 
-        [HttpPost]
+        //[HttpPost]
         [Authorize(Roles = RoleName.CanManageBikes)]
         public IHttpActionResult CreateBike(BikeDto bikeDto)
         {
@@ -92,7 +92,8 @@ namespace BikeWorld.Controllers.Api
 
         }
 
-        [HttpDelete]
+        //[HttpDelete]
+        [HttpPost]
         [Authorize(Roles = RoleName.CanManageBikes)]
         public void DeleteBike(int id)
         {

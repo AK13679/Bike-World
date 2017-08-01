@@ -6,7 +6,7 @@
 
 <h2>Customers</h2>
 
-<a href="@Url.Action("New", "Customer")" class="btn btn-primary"><i class="fa fa-user-plus"></i>New Customer</a>
+@*<a href="@Url.Action("New", "Customer")" class="btn btn-primary"><i class="fa fa-user-plus"></i>New Customer</a>*@
 <br><br>
 
 @*@if (@Model.Customers.Count == 0)
@@ -81,7 +81,7 @@
             //                url: "/api/customers/" + button.attr("data-customer-id"),
             //                method: 'DELETE',
             //                success: function () {
-            //                    //  console.log("hi chutiya");
+            //                  
             //                    curtable.row(button.parents("tr")).remove().draw();
             //                    //  button.parents("tr").remove();
             //                }
@@ -93,7 +93,7 @@
             //    //        url: "/api/customers/" + button.attr("data-customer-id"),
             //    //        method: 'DELETE',
             //    //        success: function () {
-            //    //          //  console.log("hi chutiya");
+            //    //       
             //    //            button.parents("tr").remove();
             //    //        }
             //    //    });

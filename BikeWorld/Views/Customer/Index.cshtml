@@ -81,9 +81,9 @@
                     if (Result) {
                         $.ajax({
                             url: "/deploy_bike/api/customers/" + button.attr("data-customer-id"),
-                            method: 'DELETE',
+                            method: 'POST',
                             success: function () {
-                                //  console.log("hi chutiya");
+                                
                                 curtable.row(button.parents("tr")).remove().draw();
                                 //  button.parents("tr").remove();
                             }
@@ -95,7 +95,7 @@
                 //        url: "/api/customers/" + button.attr("data-customer-id"),
                 //        method: 'DELETE',
                 //        success: function () {
-                //          //  console.log("hi chutiya");
+                //         
                 //            button.parents("tr").remove();
                 //        }
                 //    });

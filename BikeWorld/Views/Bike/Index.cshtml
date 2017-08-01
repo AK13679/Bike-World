@@ -81,9 +81,9 @@ else
                     if (Result) {
                         $.ajax({
                             url: "/deploy_bike/api/bikes/" + button.attr("data-bike-id"),
-                            method: 'DELETE',
+                            method: 'POST',
                             success: function () {
-                                //  console.log("hi chutiya");
+                               
                                 curtable.row(button.parents("tr")).remove().draw();
                                // button.parents("tr").remove();
                             }
