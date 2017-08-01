@@ -14,20 +14,21 @@ namespace BikeWorld
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
-        {
+        { //for using automapper
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
+            //configuring webapi
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-          
+
         }
-    /// <summary>
-    /// Application Error Handler
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+        /// <summary>
+        /// Application Error Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Application_Error(object sender, EventArgs e)
         {
             Exception exception = Server.GetLastError();

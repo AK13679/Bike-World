@@ -11,6 +11,7 @@ namespace BikeWorld
     {
         public static void Register(HttpConfiguration config)
         {
+            //for camel case json transfer instead of pascal 
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;

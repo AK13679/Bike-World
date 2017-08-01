@@ -13,6 +13,7 @@ namespace BikeWorld
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //attribute routing
             routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(

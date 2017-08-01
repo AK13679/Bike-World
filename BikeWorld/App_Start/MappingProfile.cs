@@ -12,6 +12,7 @@ namespace BikeWorld.App_Start
     {
         public MappingProfile()
         {
+            //mapping dto to properties of tables
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<CustomerDto, Customer>();
             Mapper.CreateMap<Bike, BikeDto>();
