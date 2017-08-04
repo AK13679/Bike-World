@@ -43,17 +43,17 @@ else
 {
     <script>
         $(document).ready(function () {
-
+          var currentDomain = '@Url.Content("~")';
           var curtable = $("#bikes").DataTable({
                 ajax: {
-                    url: "/deploy_bike/api/bikes",
+                    url: currentDomain + "/api/bikes",
                     dataSrc: ""
                 },
                 columns: [
                     {
                     data: "name",
                     render: function (data, type, bikes) {
-                        return "<a href='/deploy_bike/Bike/Edit/" + bikes.id + "'>" + bikes.name + "</a>";
+                        return "<a href= '" + currentDomain + "/Bike/Edit/" + bikes.id + "'>" + bikes.name + "</a>";
                      }
                     },
                     {
@@ -80,10 +80,10 @@ else
                 bootbox.confirm("Do you really want to delete this Bike ?", function (Result) {
                     if (Result) {
                         $.ajax({
-                            url: "/deploy_bike/api/bikes/" + button.attr("data-bike-id"),
+                            url: currentDomain +"/api/bikes/" + button.attr("data-bike-id"),
                             method: 'POST',
                             success: function () {
-                               
+
                                 curtable.row(button.parents("tr")).remove().draw();
                                // button.parents("tr").remove();
                             }

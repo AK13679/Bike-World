@@ -35,10 +35,13 @@
 
     <script>
         $(document).ready(function () {
+
             var vm = {
                 customerId: null,
                 bikeIds: []
             };
+
+            var currentDomain = '@Url.Content("~")';
 
             var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -67,7 +70,7 @@
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: '/deploy_bike/api/bikes?query=%QUERY',
+                    url: currentDomain + '/api/bikes?query=%QUERY',
                     wildcard: '%QUERY'
                 }
             });
@@ -103,7 +106,7 @@
                     //e.preventDefault();
 
                     $.ajax({
-                        url: "/deploy_bike/api/booking",
+                        url: currentDomain + "/api/booking",
                         method: 'POST',
                         data: vm,
                     })

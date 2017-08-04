@@ -40,11 +40,12 @@
                 bikeIds: []
             };
 
+            var currentDomain = '@Url.Content("~")';
             var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: '/deploy_bike/api/customers?query=%QUERY',
+                    url: currentDomain + '/api/customers?query=%QUERY',
                     wildcard: '%QUERY'
                 }
             });
@@ -67,7 +68,7 @@
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: '/deploy_bike/api/bikes?query=%QUERY',
+                    url: currentDomain + '/api/bikes?query=%QUERY',
                     wildcard: '%QUERY'
                 }
             });
@@ -103,7 +104,7 @@
                     //e.preventDefault();
 
                     $.ajax({
-                        url: "/deploy_bike/api/return",
+                        url: currentDomain + "/api/return",
                         method: 'POST',
                         data: vm,
                     })
